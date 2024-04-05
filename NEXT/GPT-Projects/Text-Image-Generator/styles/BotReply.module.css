@@ -1,0 +1,54 @@
+.avatar_container {
+  width: 65px; /* Set the desired width and height for the circular avatar */
+  height: 62px;
+  overflow: hidden;
+}
+
+.avatar_img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%; /* Match the container's border-radius to make the image circular */
+}
+
+@media only screen and (max-width: 600px) {
+  .avatar_container {
+    width: 45px;
+    height: 42px;
+    overflow: hidden;
+  }
+
+  .avatar_img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
+.fullscreen_container {
+  transition: all 0.4s;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 20;
+  width: auto;
+  height: auto;
+  background-color: rgba(0, 0, 0, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.exit_fullscreen {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  background-color: hsl(0, 0%, 0%,0.9);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+}

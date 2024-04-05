@@ -1,0 +1,29 @@
+/* * div{
+  border: 1px solid red !important;
+} */
+
+.avatar_container {
+  width: 65px; /* Set the desired width and height for the circular avatar */
+  height: 62px;
+  overflow: hidden;
+}
+
+.avatar_img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%; /* Match the container's border-radius to make the image circular */
+}
+
+@media only screen and (max-width: 600px) {
+  .avatar_container {
+    width: 45px; /* Set the desired width and height for the circular avatar */
+    height: 42px;
+    overflow: hidden;
+  }
+
+  .avatar_img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Match the container's border-radius to make the image circular */
+  }
+}

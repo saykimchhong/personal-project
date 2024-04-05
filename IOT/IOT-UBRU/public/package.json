@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "firebase": "^9.23.0",
+    "mdb-ui-kit": "^6.2.0"
+  }
+}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-auto">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"></script>
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" type="image/png" href="./logo/logo.png" />
+    <link rel="stylesheet" href="/public/style.css">
+  </head>
+  <title>Dashboard</title>
+
+  <body class="mb-5" style="background-color: rgba(212, 212, 212, 0.365)">
+    <!-- Navbar -->
+    <!-- <nav
+      class="navbar navbar-expand-sm shadow pb-3 bg-body rounded fs-4 gradient-navbar"
+    >
+      <div class="container">
+        <div class="navbar-brand">
+          <a href="index.html">
+            <img src="./logo/logo.png" alt="" class="logo-icon pulse" />
+          </a>
+        </div>
+        <button
+          class="navbar-toggler shadow bg-body rounded"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">
+                <p class="fs-2">Dashboard</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <label class="M-A-switch">
+                <input type="checkbox" />
+                <span class="M-A-slider"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav> -->
+
+    <!-- Navbar -->
+    <div class="container mt-2 p-md-5">
+      <h1>ESP32: <strong class="text-success">ON</strong></h1>
+      <h1 class="mt-5x">Real time Data</h1>
+      <!-- Temperature Card -->
+      <div class="mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+                <img src="./logo/temperature.png" alt="" />
+              </div>
+              <div class="col">
+                <h3 class="mb-0">Temperature</h3>
+                <div class="text-end">
+                  <h3>
+                    <span>
+                      <span
+                        class="sensor-data-text"
+                        id="temperature-display"
+                      ></span>
+                      °C</span
+                    >
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Humidity Card -->
+      <div class="mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+                <img src="./logo/humidity.png" alt="" />
+              </div>
+              <div class="col">
+                <h3 class="mb-0">Humidity</h3>
+                <div class="text-end">
+                  <h3>
+                    <span
+                      ><span class="sensor-data-text" id="humid-display"></span>
+                      %</span
+                    >
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Light Card -->
+      <div class="mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+                <img src="./logo/sunlight.png" alt="" />
+              </div>
+              <div class="col">
+                <h3 class="mb-0">Light</h3>
+                <div class="text-end">
+                  <h3>
+                    <span>
+                      <span class="sensor-data-text" id="light-display"></span>
+                      lux</span
+                    >
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br /><br />
+      <h1>Valve Switch</h1>
+      <div
+        class="class=row mt-5 p-sm-3 d-flex justify-content-between align-items-center"
+      >
+        <div class="col-6 mb-3">
+          <label class="relaySwitch">
+            <input type="checkbox" id="relay-switch" />
+            <span class="slider"></span>
+          </label>
+          <h3 id="relay01state">OFF</h3>
+          <br />
+        </div>
+        <!-- Relay switch script  -->
+        <script>
+          var switchBtn = document.getElementById("relay-switch");
+          var text = document.getElementById("relay01state");
+
+          switchBtn.addEventListener("change", function () {
+            if (this.checked) {
+              text.textContent = "ON";
+              console.log("Relay On!");
+            } else {
+              text.textContent = "OFF";
+              console.log("Relay Off!");
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+  <footer class="pt-3 bg-danger">
+    <p class="text-dark">&copy; 2023 Digital Innovation. All rights reserved.</p>
+  </footer>
+  <!-- Import the Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      get,
+      set,
+      child,
+      update,
+      remove,
+      onValue,
+    } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+    const firebaseConfig = {
+  apiKey: "AIzaSyAjATjXgKipF89DzawaScbbq4aG2tboBes",
+  authDomain: "iot-smartfarm-a0768.firebaseapp.com",
+  projectId: "iot-smartfarm-a0768",
+  storageBucket: "iot-smartfarm-a0768.appspot.com",
+  messagingSenderId: "935368123256",
+  appId: "1:935368123256:web:c590eecf33007db0d69e8d",
+  databaseURL: "https://iot-smartfarm-a0768-default-rtdb.asia-southeast1.firebasedatabase.app"
+};
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    // Read data from firebase
+    function readSensor(path, callback) {
+      const db = getDatabase();
+      const dataRef = ref(db, path);
+      onValue(dataRef, (snapshot) => {
+        const data = snapshot.val();
+        callback(data);
+      });
+    }
+    // Get temp from server
+    readSensor("sensors/temperature", (data) => {
+      const temperature = data; // Assign the data received to 'temperature' variable
+      const temperatureDisplay = document.getElementById("temperature-display"); // Get the HTML element
+      temperatureDisplay.innerHTML = temperature.toString().padStart(2, "0"); // Set the HTML content to the temperature value converted to a string
+    });
+    // Get humid from server
+    readSensor("sensors/humidity", (data) => {
+      const humid = data; // Assign the data received to 'humid' variable
+      const humidDisplay = document.getElementById("humid-display"); // Get the HTML element
+      humidDisplay.innerHTML = humid.toString().padStart(2, "0"); // Set the HTML content to the humidity value converted to a string
+    });
+    // Get mois from server
+    readSensor("sensors/light", (data) => {
+      const moist = data; // Assign the data received to 'moist' variable
+      const moistDisplay = document.getElementById("light-display"); // Get the HTML element
+      moistDisplay.innerHTML = moist.toString().padStart(2, "0"); // Set the HTML content to the moisture value converted to a string
+    });
+    // Function to store button state in database
+    function changeRelayState(buttonID, state) {
+      // Create a reference to the button state in Firebase
+      const buttonStateRef = ref(db, `Relay/${buttonID}`);
+
+      // Set the button state in Firebase to the new state
+      set(buttonStateRef, state)
+        .then(() =>
+          console.log(`Button state for ${buttonID} updated successfully`)
+        )
+        .catch((error) =>
+          console.error(`Error updating button state for ${buttonID}: ${error}`)
+        );
+    }
+    // Switch for Relay
+    const relayBtn = document.getElementById("relay-switch");
+
+    relayBtn.addEventListener("click", () => {
+      relayBtn.classList.toggle("on");
+      if (relayBtn.classList.contains("on")) {
+        console.log("relay ON"); // button is on
+        changeRelayState("Relay01", 1);
+      } else {
+        console.log("relay OFF"); // button is off
+        changeRelayState("Relay01", 0);
+      }
+    });
+  </script>
+</html>

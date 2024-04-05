@@ -1,0 +1,262 @@
+/*Page transition*/
+body {
+  animation: transitionIn 0.75s;
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+    transform: rotateY(-10deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateY(0);
+  }
+}
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    #ee7724,
+    #d8363a,
+    #dd3675,
+    #b44593
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to right,
+    rgba(74, 196, 115, 1),
+    rgba(60, 211, 183, 1)
+  );
+}
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
+  }
+}
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+  }
+}
+/* CSS Body */
+
+/* CSS Footer */
+footer {
+  background-color: #bdbdbd;
+  margin-top: 5%;
+  /* padding-top: 15px; */
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+/* Logo animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Gradian color for navbar */
+.gradient-navbar {
+  /* fallback for old browsers */
+  background: #4facfe;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(79, 172, 254, 0.5),
+    rgba(0, 242, 254, 0.5)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to right,
+    rgba(79, 172, 254, 0.5),
+    rgba(0, 242, 254, 0.5)
+  );
+}
+.nav-item:hover {
+  transform: scale(1.05);
+  transition: all 0.3s;
+  text-decoration: underline;
+}
+/* Responsive text */
+.sensor-data-text {
+  font-size: 90px;
+}
+
+@media (min-width: 768px) {
+  .sensor-data-text {
+    font-size: 120px;
+  }
+}
+
+@media (min-width: 992px) {
+  .sensor-data-text {
+    font-size: 120px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sensor-data-text {
+    font-size: 90px;
+  }
+}
+
+/* Switch Style */
+.l {
+  background-color: #e70000b3;
+  border-radius: 0.75em;
+  box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.3) inset;
+  color: #f3e221;
+  display: inline-flex;
+  align-items: center;
+  margin: auto;
+  padding: 0.15em;
+  width: 3em;
+  height: 1.5em;
+  transition: background-color 0.1s 0.3s ease-out, box-shadow 0.1s 0.3s ease-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.l:before,
+.l:after {
+  content: "";
+  display: block;
+}
+.l:before {
+  background-color: #d7d7d7;
+  border-radius: 50%;
+  width: 1.2em;
+  height: 1.2em;
+  transition: background-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+  z-index: 1;
+}
+.l:after {
+  background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.15) 0) 0 50% /
+      50% 100%,
+    repeating-linear-gradient(90deg, #bbb 0, #bbb, #bbb 20%, #999 20%, #999 40%)
+      0 50% / 50% 100%,
+    radial-gradient(circle at 50% 50%, #888 25%, transparent 26%);
+  background-repeat: no-repeat;
+  border: 0.25em solid transparent;
+  border-left: 0.4em solid #d8d8d8;
+  border-right: 0 solid transparent;
+  transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+  transform: translateX(-22.5%);
+  transform-origin: 25% 50%;
+  width: 1.2em;
+  height: 1em;
+}
+/* Checked */
+.l:checked {
+  background-color: #21f372;
+  box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.1) inset;
+}
+.l:checked:before {
+  background-color: currentColor;
+  transform: translateX(125%);
+}
+.l:checked:after {
+  border-left-color: currentColor;
+  transform: translateX(-2.5%) rotateY(180deg);
+}
+/* Other States */
+.l:focus {
+  /* Usually an anti-A11Y practice but set to remove an annoyance just for this demo */
+  outline: 0;
+}
+
+/* Relay Switch */
+.relaySwitch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-right: 10px;
+}
+
+.relaySwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(231, 0, 0, 0.702);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+input:checked + .slider {
+  background-color: #21f372;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.text {
+  display: inline-block;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.switch {
+  border-radius: 5px;
+}
+/* * {
+  border: 1px solid black;
+} */
+.icons {
+  width: 200px;
+  height: 200px;
+}
+/* // X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .icons {
+    width: 150px;
+    height: 150px;
+  }
+}

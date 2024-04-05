@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <!-- Link to JavaScript file -->
+    <link rel="stylesheet" href="./script.js" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" type="image/png" href="./logo/Sensorify.png" />
+  </head>
+
+  <title>Login to Sensorify</title>
+  <body>
+    <section
+      class="h-100 gradient-form shadow-3 mb-5"
+      style="background-color: #eee"
+    >
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-xl-10">
+            <div class="card rounded-3 text-black">
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="card-body p-md-5 mx-md-4">
+                    <div class="text-center">
+                      <img
+                        src="/logo/Sensorify.png"
+                        style="width: 120px"
+                        alt="logo"
+                        class="pulse"
+                      />
+
+                      <h4 class="mt-1 mb-5 pb-1">We are The Sensorify Team</h4>
+                    </div>
+
+                    <form id="form-input">
+                      <p>Please login to your account</p>
+
+                      <div class="form-outline mb-4">
+                        <input
+                          type="email"
+                          name="email"
+                          class="form-control"
+                          required
+                        />
+                        <label class="form-label" for="email">Email</label>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input
+                          type="password"
+                          name="password"
+                          class="form-control"
+                          required
+                        />
+                        <label class="form-label" for="password"
+                          >Password</label
+                        >
+                      </div>
+
+                      <div class="text-center pt-1 mb-5 pb-1">
+                        <button
+                          class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                          type="submit"
+                        >
+                          Log in
+                        </button>
+                        <!-- <a class="text-muted" href="#!">Forgot password?</a> -->
+                      </div>
+
+                      <!-- <div
+                        class="d-flex align-items-center justify-content-center pb-4"
+                      >
+                        <p class="mb-0 me-2">Don't have an account?</p>
+                        <button type="button" class="btn btn-outline-danger">
+                          Create new
+                        </button>
+                      </div> -->
+                    </form>
+                  </div>
+                </div>
+                <div
+                  class="col-lg-6 d-flex align-items-center gradient-custom-2"
+                >
+                  <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                    <h4 class="mb-4 fs-3 text"><center>Sensorify</center></h4>
+                    <p class="small mb-0 fs-5 text">
+                      Sensorify is an IoT project that aims to collect and
+                      analyze data from various sensors, such as temperature,
+                      humidity, and motion sensors. The project could be used
+                      for monitoring and controlling various environments, such
+                      as homes, offices, and industrial facilities. Sensorify
+                      could also be used for predictive maintenance and energy
+                      efficiency purposes, by analyzing data to identify
+                      patterns and anomalies that could indicate equipment
+                      malfunctions or wasteful energy usage. Overall, Sensorify
+                      would be a valuable tool for managing and optimizing the
+                      performance of various systems and environments, with the
+                      ultimate goal of improving safety, comfort, and
+                      efficiency.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Import the Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"></script>
+    <script type="module">
+      const firebaseConfig = {
+        apiKey: "AIzaSyChrXLebnWYPh0GkYCWTRAMEfe2hfHAZ0c",
+        authDomain: "iot01-17127.firebaseapp.com",
+        databaseURL:
+          "https://iot01-17127-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "iot01-17127",
+        storageBucket: "iot01-17127.appspot.com",
+        messagingSenderId: "5981526119",
+        appId: "1:5981526119:web:a8930930d7f8588f8b5cc2",
+      };
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+      // Reset user input
+      function Reset() {
+        document.getElementById("form-input").reset();
+      }
+
+      const loginForm = document.getElementById("form-input");
+
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault(); // Prevent form submission
+
+        // Get user input
+        const email = loginForm.email.value;
+        const password = loginForm.password.value;
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            alert("Logged in successfully");
+            console.log("User logged in: ", user);
+            window.location.href = "dashboard.html";
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert("Logged in Error");
+            console.log("Error Code: ", errorCode, errorMessage);
+            Reset();
+          });
+      });
+    </script>
+  </body>
+
+  <footer class="mt-5">
+    <p>&copy; 2023 Kimchhong Say. All rights reserved.</p>
+  </footer>
+</html>

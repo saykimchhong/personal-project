@@ -1,0 +1,7 @@
+- Create virtual env
+python3 -m venv ai, ai is name the environment
+
+- Activate virtual env
+python -m venv ai 
+
+pip3 install llama-index pypdf python-dotenv pandas 
